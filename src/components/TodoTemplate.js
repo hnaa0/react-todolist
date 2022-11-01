@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import TodoTitle from "./TodoTitle";
@@ -6,11 +7,37 @@ import TodoInsert from "./TodoInsert";
 import TodoItemList from "./TodoItemList";
 
 export default function TodoTemplate() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: "리액트 공부", done: true },
+    { id: 2, text: "ts 공부", done: false },
+  ]);
+
+  const todayId = () => {
+    let today = new Date();
+
+    let month = today.getMonth() + 1;
+    let date = today.getDate();
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    return month + "-" + date + "/" + hours + ":" + minutes + ":" + seconds;
+  };
+
+  const handleSubmit = (text) => {
+    const todo = {
+      id: todayId(),
+      text,
+      done: false,
+    };
+    setTodos(todos.concat(todo));
+  };
+
   return (
     <Container>
       <TodoTitle />
-      <TodoInsert />
-      <TodoItemList />
+      <TodoInsert onSubmit={handleSubmit} />
+      <TodoItemList todos={todos} />
     </Container>
   );
 }

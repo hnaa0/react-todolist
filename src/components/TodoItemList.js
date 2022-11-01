@@ -3,10 +3,12 @@ import styled from "styled-components";
 
 import TodoItem from "./TodoItem";
 
-export default function TodoItemList() {
+export default function TodoItemList({ todos }) {
   return (
     <Container>
-      <TodoItem />
+      {todos.map((todo) => (
+        <TodoItem todo={todo} key={todo.id} />
+      ))}
     </Container>
   );
 }

@@ -1,12 +1,32 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function TodoInsert() {
+export default function TodoInsert(props) {
+  const [content, setContent] = useState("");
+
+  const handleChange = (e) => {
+    setContent(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 기본 동작 방지
+    if (content === "") return; // 내용 없으면 리턴
+    props.onSubmit(content);
+  };
+
   return (
     <Container>
-      <Form>
-        <TextInput type="text" placeholder="오늘의 할일을 입력하세요." />
-        <AddBtn type="submit">+</AddBtn>
+      <Form onSubmit={handleSubmit}>
+        <TextInput
+          type="text"
+          value={content}
+          onChange={handleChange}
+          placeholder="오늘의 할일을 입력하세요."
+        />
+        <AddBtn onClick={handleSubmit} type="submit">
+          +
+        </AddBtn>
       </Form>
     </Container>
   );
