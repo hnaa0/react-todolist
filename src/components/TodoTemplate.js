@@ -33,11 +33,19 @@ export default function TodoTemplate() {
     setTodos(todos.concat(todo));
   };
 
+  const onToggle = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id ? { ...todo, done: !todo.done } : todo;
+      })
+    );
+  };
+
   return (
     <Container>
       <TodoTitle />
       <TodoInsert onSubmit={handleSubmit} />
-      <TodoItemList todos={todos} />
+      <TodoItemList todos={todos} onToggle={onToggle} />
     </Container>
   );
 }

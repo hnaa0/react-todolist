@@ -1,11 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function TodoItem() {
+export default function TodoItem({ todo, onToggle }) {
+  const { id, text, done } = todo;
+
   return (
     <Container>
-      <DoneBtn></DoneBtn>
-      <Txt>리액트</Txt>
+      <DoneBtn
+        onClick={() => onToggle(id)}
+        style={{ borderColor: done ? "#fedf48" : "#c9c9c9" }}
+      ></DoneBtn>
+      <Txt
+        style={{
+          color: done ? "#c9c9c9" : "black",
+        }}
+      >
+        {text}
+      </Txt>
       <DeleteBtn>―</DeleteBtn>
     </Container>
   );
