@@ -27,7 +27,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 36px;
-  margin: 4px 0;
+  margin: 12px 0;
 `;
 
 const DoneBtn = styled.button`

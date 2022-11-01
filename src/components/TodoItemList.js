@@ -19,7 +19,7 @@ export default function TodoItemList({ todos, onToggle, onDelete }) {
 }
 
 const Container = styled.div`
-  height: 80%;
+  height: 530px;
   width: 100%;
-  padding: 20px;
+  padding: 20px 36px;
 `;

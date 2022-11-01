@@ -14,8 +14,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 10%;
-  margin: 20px 0;
+  height: 100px;
+  padding: 20px 0;
 `;
 
 const Title = styled.h1`

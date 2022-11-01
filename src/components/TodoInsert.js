@@ -13,6 +13,7 @@ export default function TodoInsert(props) {
     e.preventDefault(); // 기본 동작 방지
     if (content === "") return; // 내용 없으면 리턴
     props.onSubmit(content);
+    setContent(""); // 입력창 초기화
   };
 
   return (
@@ -36,8 +37,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  // wdith: 100%;
-  height: 10%;
+  height: 120px;
 `;
 
 const Form = styled.form`
