@@ -3,11 +3,16 @@ import styled from "styled-components";
 
 import TodoItem from "./TodoItem";
 
-export default function TodoItemList({ todos, onToggle }) {
+export default function TodoItemList({ todos, onToggle, onDelete }) {
   return (
     <Container>
       {todos.map((todo) => (
-        <TodoItem todo={todo} key={todo.id} onToggle={onToggle} />
+        <TodoItem
+          todo={todo}
+          key={todo.id}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
       ))}
     </Container>
   );

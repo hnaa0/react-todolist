@@ -8,8 +8,8 @@ import TodoItemList from "./TodoItemList";
 
 export default function TodoTemplate() {
   const [todos, setTodos] = useState([
-    { id: 1, text: "리액트 공부", done: true },
-    { id: 2, text: "ts 공부", done: false },
+    { id: 1, text: "react 강의 듣기", done: true },
+    { id: 2, text: "ts 강의 듣기", done: false },
   ]);
 
   const todayId = () => {
@@ -41,11 +41,17 @@ export default function TodoTemplate() {
     );
   };
 
+  const onDelete = (id) => {
+    if (window.confirm("해당 일정을 삭제하시겠습니까?") == true) {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    } else return;
+  };
+
   return (
     <Container>
       <TodoTitle />
       <TodoInsert onSubmit={handleSubmit} />
-      <TodoItemList todos={todos} onToggle={onToggle} />
+      <TodoItemList todos={todos} onToggle={onToggle} onDelete={onDelete} />
     </Container>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function TodoItem({ todo, onToggle }) {
+export default function TodoItem({ todo, onToggle, onDelete }) {
   const { id, text, done } = todo;
 
   return (
@@ -17,7 +17,7 @@ export default function TodoItem({ todo, onToggle }) {
       >
         {text}
       </Txt>
-      <DeleteBtn>―</DeleteBtn>
+      <DeleteBtn onClick={() => onDelete(id)}>―</DeleteBtn>
     </Container>
   );
 }
