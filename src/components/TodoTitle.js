@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function TodoTitle() {
   return (
     <Container>
-      <Title>TODO LSIT</Title>
+      <Title>TODO LIST</Title>
     </Container>
   );
 }
