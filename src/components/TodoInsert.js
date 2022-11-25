@@ -22,6 +22,7 @@ export default function TodoInsert(props) {
         <TextInput
           type="text"
           value={content}
+          maxLength="20"
           onChange={handleChange}
           placeholder="오늘의 할일을 입력하세요."
         />
@@ -67,4 +68,8 @@ const AddBtn = styled.button`
   font-weight: 700;
   color: white;
   background-color: #fedf48;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

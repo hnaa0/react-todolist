@@ -13,6 +13,7 @@ export default function TodoItem({ todo, onToggle, onDelete }) {
       <Txt
         style={{
           color: done ? "#c9c9c9" : "black",
+          textDecorationLine: done ? "line-through" : "none",
         }}
       >
         {text}
@@ -36,6 +37,10 @@ const DoneBtn = styled.button`
   border: 1.5px solid #c9c9c9;
   border-radius: 50%;
   background-color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Txt = styled.p`
@@ -53,4 +58,8 @@ const DeleteBtn = styled.button`
   font-weight: 800;
   line-height: 100%;
   color: #fedf48;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

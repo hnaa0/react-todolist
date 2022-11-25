@@ -42,7 +42,7 @@ export default function TodoTemplate() {
   };
 
   const onDelete = (id) => {
-    if (window.confirm("해당 일정을 삭제하시겠습니까?") == true) {
+    if (window.confirm("해당 일정을 삭제하시겠습니까?") === true) {
       setTodos(todos.filter((todo) => todo.id !== id));
     } else return;
   };
@@ -64,6 +64,5 @@ const Container = styled.div`
   height: 750px;
   border-radius: 20px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
   background-color: white;
 `;

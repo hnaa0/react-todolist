@@ -22,5 +22,5 @@ const Container = styled.div`
   height: 530px;
   width: 100%;
   padding: 20px 36px;
-  overflow: scroll;
+  overflow-x: hidden;
 `;
