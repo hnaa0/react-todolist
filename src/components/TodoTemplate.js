@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -7,10 +7,14 @@ import TodoInsert from "./TodoInsert";
 import TodoItemList from "./TodoItemList";
 
 export default function TodoTemplate() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "react 강의 듣기", done: true },
-    { id: 2, text: "ts 강의 듣기", done: false },
-  ]);
+  const [todos, setTodos] = useState(
+    localStorage.getItem("todoItems")
+      ? JSON.parse(localStorage.getItem("todoItems"))
+      : [
+          { id: 1, text: "react 강의 듣기", done: true },
+          { id: 2, text: "ts 강의 듣기", done: false },
+        ]
+  );
 
   const todayId = () => {
     let today = new Date();
@@ -31,6 +35,7 @@ export default function TodoTemplate() {
       done: false,
     };
     setTodos(todos.concat(todo));
+    localStorage.setItem("todoItems", JSON.stringify(todos));
   };
 
   const onToggle = (id) => {
@@ -39,13 +44,28 @@ export default function TodoTemplate() {
         return todo.id === id ? { ...todo, done: !todo.done } : todo;
       })
     );
+    localStorage.setItem("todoItems", JSON.stringify(todos));
   };
 
   const onDelete = (id) => {
     if (window.confirm("해당 일정을 삭제하시겠습니까?") === true) {
       setTodos(todos.filter((todo) => todo.id !== id));
+      localStorage.setItem("todoItems", JSON.stringify(todos));
     } else return;
   };
+
+  useEffect(() => {
+    const todoItems_local = localStorage.getItem("todoItems");
+    if (todoItems_local) {
+      setTodos(JSON.parse(todoItems_local));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (todos) {
+      localStorage.setItem("todoItems", JSON.stringify(todos));
+    }
+  }, [todos]);
 
   return (
     <Container>
